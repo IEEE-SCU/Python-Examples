@@ -51,3 +51,26 @@ def colored_print(text,color):
             powershell_print(text,color)
     else:
         print color+text+'\033[0m'
+
+#####################################
+#### Or you can use this method #####
+#####################################
+# Check if we are running this on windows platform
+is_windows = sys.platform.startswith('win')
+
+# Console Colors
+if is_windows:
+    # Windows deserve coloring too :D
+    G = '\033[92m'  # green
+    Y = '\033[93m'  # yellow
+    B = '\033[94m'  # blue
+    R = '\033[91m'  # red
+    W = '\033[0m'   # white
+    try:
+        import win_unicode_console , colorama
+        win_unicode_console.enable()
+        colorama.init()
+        #Now the unicode will work ^_^
+    except:
+        print("[!] Error: Coloring libraries not installed ,no coloring will be used [Check the readme]")
+        G = Y = B = R = W = G = Y = B = R = W = ''
